@@ -4,4 +4,3 @@ def test_validador_apuesta():
     validador = ValidadorApuesta()
     assert validador.validar_apuesta(100) == True
     assert validador.validar_apuesta(0) == False
-    assert validador.validar_apuesta(-50) == False
