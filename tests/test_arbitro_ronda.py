@@ -99,3 +99,66 @@ def test_calzar_correcto(mocker):
     resultado = arbitro.resolver_calce(apuesta, cacho_calzador, cachos)
     assert resultado == 1   
     cacho_calzador.ganar_dado.assert_called_once()
+
+def test_calzar_mas_mitad_dados(mocker):
+    """
+    se puede calzar cuando hay la mitad o mas de dados iniciales en juego
+    """
+    arbitro = ArbitroRonda()
+    
+    # mock cacho calzador con 3 dados
+    cacho_calzador = Mock()
+    cacho_calzador.cantidad_dados.return_value = 3
+    
+    # mocks de cachos
+    otros_cachos = [Mock(), Mock()]
+    otros_cachos[0].cantidad_dados.return_value = 2
+    otros_cachos[1].cantidad_dados.return_value = 4
+    
+    cachos = [cacho_calzador] + otros_cachos
+    
+    # act -- 9 dados actuales >= 7.5 (mitad de 15)
+    puede_calzar = arbitro.puede_calzar(cacho_calzador, cachos)
+    
+    # assert
+    assert puede_calzar == True
+
+
+def test_calzar_menos_mitad_dados(mocker):
+    """
+    no se puede calzar cuando hay menos de la mitad de dados iniciales
+    """
+    arbitro = ArbitroRonda()
+    
+    # mock cacho calzador con 2 dados
+    cacho_calzador = Mock()
+    cacho_calzador.cantidad_dados.return_value = 2
+    
+    otros_cachos = [Mock(), Mock()]
+    otros_cachos[0].cantidad_dados.return_value = 2
+    otros_cachos[1].cantidad_dados.return_value = 2
+    
+    cachos = [cacho_calzador] + otros_cachos
+    
+    # act -- 6 dados actuales < 7.5 (mitad de 15)
+    puede_calzar = arbitro.puede_calzar(cacho_calzador, cachos)
+    
+    # assert
+    assert puede_calzar == False
+
+
+def test_calzar_solo_un_dado(mocker):
+    """
+    se puede calzar cuando el jugador solo tiene un dado
+    """
+    arbitro = ArbitroRonda()
+    
+    # mock dado calzador
+    cacho_calzador = Mock()
+    cacho_calzador.cantidad_dados.return_value = 1  # Solo un dado
+    
+    cachos = [cacho_calzador, Mock(), Mock()]
+    
+    # act y assert
+    puede_calzar = arbitro.puede_calzar(cacho_calzador, cachos)
+    assert puede_calzar == True
