@@ -87,3 +87,4 @@ def test_siguiente_turno_antihorario():
     # act y assert
     siguiente = gestor.obtener_siguiente_cacho()
     assert siguiente == gestor.cachos[2] 
+

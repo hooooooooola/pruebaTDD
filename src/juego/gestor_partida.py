@@ -30,6 +30,20 @@ class GestorPartida:
             
             # empate (solo los empatados siguen participando)
             cachos_participantes = ganadores
-    
+
+    # establecer la direccion
     def establecer_direccion(self, direccion):  
         self.direccion = direccion
+
+    # pasar turno
+    def obtener_siguiente_cacho(self):
+        indice_actual = self.cachos.index(self.cacho_actual)
+        if self.direccion is None: 
+            self.direccion = "horario" 
+            
+        if self.direccion == "horario":
+            siguiente_indice = (indice_actual + 1) % len(self.cachos)
+        else: 
+            siguiente_indice = (indice_actual - 1) % len(self.cachos)
+        
+        return self.cachos[siguiente_indice]
