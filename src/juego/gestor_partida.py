@@ -30,3 +30,6 @@ class GestorPartida:
             
             # empate (solo los empatados siguen participando)
             cachos_participantes = ganadores
+    
+    def establecer_direccion(self, direccion):  
+        self.direccion = direccion
