@@ -47,3 +47,10 @@ class GestorPartida:
             siguiente_indice = (indice_actual - 1) % len(self.cachos)
         
         return self.cachos[siguiente_indice]
+
+    # ver si alguien tiene un solo dado
+    def verificar_cachos_con_un_dado(self):
+        for cacho in self.cachos:
+            if len(cacho.dados) == 1:
+                return cacho
+        return None
