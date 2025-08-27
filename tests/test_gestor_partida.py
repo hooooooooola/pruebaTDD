@@ -51,3 +51,15 @@ def test_determinar_cacho_inicial_con_empate(mocker):
     
     # assert
     assert cacho_inicial == gestor.cacho_actual
+
+def test_establecer_direccion():
+    """
+    establecer la direccion de la partida
+    """
+    gestor = GestorPartida(2)
+    
+    # acts y asserts
+    gestor.establecer_direccion("antihorario")
+    assert gestor.direccion == "antihorario"
+    gestor.establecer_direccion("horario")
+    assert gestor.direccion == "horario"
