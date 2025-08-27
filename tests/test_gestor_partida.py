@@ -88,3 +88,15 @@ def test_siguiente_turno_antihorario():
     siguiente = gestor.obtener_siguiente_cacho()
     assert siguiente == gestor.cachos[2] 
 
+def test_detectar_cachos_con_un_dado():
+    """
+    detectar cuando un cacho queda con un solo dado
+    """
+    gestor = GestorPartida(2)
+
+    # mock cacho con un dado
+    gestor.cachos[1].dados = [Mock()]
+    
+    # act y assert
+    cacho_un_dado = gestor.verificar_cachos_con_un_dado()
+    assert cacho_un_dado == gestor.cachos[1]
