@@ -54,3 +54,13 @@ class GestorPartida:
             if len(cacho.dados) == 1:
                 return cacho
         return None
+        
+    # ver cuando quede un solo cacho con dados
+    def partida_terminada(self):
+        cachos_con_dados = [c for c in self.cachos if len(c.dados) > 0]
+        return len(cachos_con_dados) <= 1
+    
+    # obtener el cacho ganador
+    def obtener_ganador(self):
+        cachos_con_dados = [c for c in self.cachos if len(c.dados) > 0]
+        return cachos_con_dados[0] if cachos_con_dados else None
