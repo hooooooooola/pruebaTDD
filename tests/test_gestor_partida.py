@@ -1,4 +1,3 @@
-import pytest
 from unittest.mock import Mock, patch
 from src.juego.gestor_partida import GestorPartida
 
@@ -63,3 +62,28 @@ def test_establecer_direccion():
     assert gestor.direccion == "antihorario"
     gestor.establecer_direccion("horario")
     assert gestor.direccion == "horario"
+
+def test_siguiente_turno_horario():
+    """
+    obtener el cacho que juega en el siguiente turno, en sentido horario
+    """
+    gestor = GestorPartida(3)
+    gestor.direccion = "horario"
+    gestor.cacho_actual = gestor.cachos[0]
+    
+    # act y assert
+    siguiente = gestor.obtener_siguiente_cacho()
+    assert siguiente == gestor.cachos[1]
+
+
+def test_siguiente_turno_antihorario():
+    """
+    obtener el cacho que juega en el siguiente turno, en sentido antihorario
+    """
+    gestor = GestorPartida(3)
+    gestor.direccion = "antihorario"
+    gestor.cacho_actual = gestor.cachos[0]
+    
+    # act y assert
+    siguiente = gestor.obtener_siguiente_cacho()
+    assert siguiente == gestor.cachos[2] 
