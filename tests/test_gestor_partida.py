@@ -100,3 +100,19 @@ def test_detectar_cachos_con_un_dado():
     # act y assert
     cacho_un_dado = gestor.verificar_cachos_con_un_dado()
     assert cacho_un_dado == gestor.cachos[1]
+    
+def test_partida_terminada():
+    """
+    la partida termina cuando solo queda un cacho con dados y es el ganador
+    """
+    gestor = GestorPartida(3)
+    
+    # Simular que cacho1 y cacho2 pierden todos sus dados
+    gestor.cachos[1].dados = []  # Sin dados
+    gestor.cachos[2].dados = []  # Sin dados
+    
+    # acts y asserts
+    terminada = gestor.partida_terminada()
+    ganador = gestor.obtener_ganador()    
+    assert terminada == True
+    assert ganador == gestor.cachos[0]
