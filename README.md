@@ -21,19 +21,25 @@ pip install -r requirements.txt
 Para ejecutar los tests, usando pytest:
 
 ```
-pytest tests
+pytest
+o
+python3 -m pytest
 ```
 
 O para una informacion mas detallada:
 
 ```
-pytest tests -v
+pytest -v
+o
+python3 -m pytest -v
 ```
 
 Tambien puedes ver el coverage de los test con:
 
 ```
-pytest tests -v
+pytest --cov=src --cov-report=term-missing 
+o
+python3 -m pytest --cov=src --cov-report=term-missing
 ```
 
 ## Estructura del proyecto
