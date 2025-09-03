@@ -61,5 +61,6 @@ python3 -m pytest --cov=src --cov-report=term-missing
 
 ## Autores
 
-- Felipe Tilleria
+- Felipe Alejandro Tilleria Morales
 - Oliver Peñailillo
+- Cristóbal Alonso González Cifuentes
