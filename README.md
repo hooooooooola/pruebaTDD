@@ -16,7 +16,7 @@ Este proyecto implementa el juego de Dudo en Python.
 pip install -r requirements.txt
 ```
 
-## EJecucion Pruebas
+## EJecucion de Pruebas
 
 Para ejecutar los tests, usando pytest:
 
