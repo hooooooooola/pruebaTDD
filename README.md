@@ -45,5 +45,5 @@ pytest tests -v
 
 ## Autores
 
-Felipe Tilleria
-Oliver Peñailillo
+- Felipe Tilleria
+- Oliver Peñailillo
